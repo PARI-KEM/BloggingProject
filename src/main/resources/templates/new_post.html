@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Post</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+          background: #0a0a0a;
+          font-family: 'JetBrains Mono', monospace;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+        }
+        h1 {
+          color: cyan;
+          text-shadow: 0 0 10px cyan;
+          margin-bottom: 20px;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          width: 400px;
+          gap: 15px;
+        }
+        input, textarea, select {
+          background: transparent;
+          border: 2px solid cyan;
+          color: white;
+          border-radius: 8px;
+          padding: 10px;
+          font-size: 16px;
+        }
+        button {
+          background: cyan;
+          border: none;
+          color: black;
+          font-size: 18px;
+          padding: 12px;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        button:hover {
+          background: white;
+          color: cyan;
+          box-shadow: 0 0 20px cyan;
+        }
+    </style>
+</head>
+<body>
+<a href="/choose-space" style="color: cyan; text-decoration: none; margin-bottom: 20px;">← Back</a>
+<h1>Create a New Post ✍️</h1>
+<form th:action="@{/save}" th:object="${post}" method="post">
+    <input type="text" th:field="*{title}" placeholder="Title" required>
+    <input type="text" th:field="*{author}" placeholder="Author" required>
+    <textarea th:field="*{content}" placeholder="Content..." rows="5" required></textarea>
+    <select th:field="*{visibility}">
+        <option value="User">User Space</option>
+        <option value="Server">General Space</option>
+    </select>
+    <button type="submit">Publish 🚀</button>
+</form>
+</body>
+</html>
+

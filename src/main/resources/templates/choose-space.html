@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Choose Space</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 { color: cyan; text-shadow: 0 0 10px cyan; margin-bottom: 40px; }
+    a {
+      color: cyan;
+      border: 2px solid cyan;
+      padding: 15px 40px;
+      border-radius: 12px;
+      margin: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+    a:hover {
+      background: cyan;
+      color: #000;
+      box-shadow: 0 0 20px cyan;
+    }
+  </style>
+</head>
+<body>
+<h1>Pick Your Space</h1>
+<a href="/user_space">Your Space</a>
+<a href="/general-space">Our Space</a>
+<a href="/new_post">Write New Post</a>
+</body>
+</html>
+

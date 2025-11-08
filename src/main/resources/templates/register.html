@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+        body {
+          margin: 0;
+          font-family: 'JetBrains Mono', monospace;
+          background: radial-gradient(circle at top left, #0f0f10, #000);
+          color: #d1d1d1;
+          height: 100vh;
+          overflow: hidden;
+        }
+
+        .bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(120deg, #1a1a1d, #111, #1a1a1d);
+          background-size: 400% 400%;
+          animation: gradientMove 10s ease infinite;
+          z-index: -1;
+        }
+
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+        }
+
+        h2 {
+          color: #9333ea;
+          font-weight: 600;
+          letter-spacing: 1px;
+          margin-bottom: 20px;
+        }
+
+        form {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          box-shadow: 0 0 15px rgba(0,0,0,0.5);
+          border-radius: 12px;
+          padding: 30px;
+          width: 320px;
+          text-align: center;
+          backdrop-filter: blur(5px);
+          animation: fadeIn 1s ease;
+        }
+
+        input {
+          width: 90%;
+          margin: 12px 0;
+          padding: 10px;
+          border: 1px solid #333;
+          border-radius: 8px;
+          background: #0f0f10;
+          color: #d1d1d1;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 14px;
+          outline: none;
+          transition: 0.3s;
+        }
+
+        input:focus {
+          border-color: #9333ea;
+          box-shadow: 0 0 6px #9333ea;
+        }
+
+        button {
+          margin-top: 10px;
+          background: linear-gradient(90deg, #9333ea, #2563eb);
+          border: none;
+          padding: 10px 20px;
+          color: white;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: 0.3s;
+          font-family: 'JetBrains Mono', monospace;
+          font-weight: 600;
+        }
+
+        button:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 15px #9333ea;
+        }
+
+        a {
+          color: #60a5fa;
+          text-decoration: none;
+          font-size: 13px;
+          display: inline-block;
+          margin-top: 10px;
+          transition: 0.3s;
+        }
+
+        a:hover {
+          color: #9333ea;
+        }
+    </style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+    <h2>Register</h2>
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <input type="text" th:field="*{username}" placeholder="Username" required><br>
+        <input type="password" th:field="*{password}" placeholder="Password" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <a href="/login">← Already have an account?</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${post.title}">Blog View</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top left, #0d0d0d, #000);
+      color: #f5f6fa;
+      margin: 0;
+      overflow-y: auto;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 50px 0;
+      position: relative;
+    }
+
+    /* ✨ Background rotating gradient */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, #00bfff, #ff0099, #00ffcc, #6600ff, #00bfff);
+      animation: rotateBg 18s linear infinite;
+      opacity: 0.06;
+      filter: blur(180px);
+      z-index: 0;
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ✨ Blog Container */
+    .blog-container {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+      padding: 50px 60px;
+      width: 80%;
+      max-width: 850px;
+      animation: slideUp 0.8s ease-out;
+      z-index: 1;
+      overflow-y: auto;
+      max-height: 85vh;
+    }
+
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(50px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ✨ Title */
+    h1 {
+      font-size: 2rem;
+      color: #00d4ff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+      letter-spacing: 1px;
+      animation: fadeInText 1s ease;
+    }
+
+    @keyframes fadeInText {
+      0% { opacity: 0; transform: translateY(-15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✨ Author */
+    .author {
+      font-size: 15px;
+      color: #b2bec3;
+      margin-bottom: 25px;
+      text-align: right;
+      font-style: italic;
+      opacity: 0.9;
+      animation: fadeInText 1s ease 0.2s both;
+    }
+
+    /* ✨ Content */
+    .content {
+      font-size: 17px;
+      color: #dfe6e9;
+      line-height: 1.9;
+      white-space: pre-wrap;
+      animation: fadeInText 1s ease 0.4s both;
+    }
+
+    /* ✨ Back button */
+    a.back {
+      display: inline-block;
+      color: #ff66cc;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    a.back::before {
+      content: "←";
+      margin-right: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    a.back:hover {
+      color: #ff99dd;
+      transform: translateX(-3px);
+    }
+
+    a.back:hover::before {
+      transform: translateX(-3px);
+    }
+
+    /* ✨ Lottie Animation - Anime Girl */
+    .anime-girl {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ✨ Confetti effect overlay */
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="confetti">
+  <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_pwohahvd.json"  background="transparent" speed="1" loop autoplay></lottie-player>
+</div>
+
+<lottie-player class="anime-girl" src="https://assets9.lottiefiles.com/packages/lf20_qwATcU.json" background="transparent" speed="1" loop autoplay></lottie-player>
+
+<div class="blog-container">
+  <a href="/user_space" class="back">Back</a>
+  <h1 th:text="${post.title}">Blog Title</h1>
+  <div class="author">By <span th:text="${post.author}">Author</span></div>
+  <div class="content" th:text="${post.content}">Blog Content</div>
+</div>
+
+<!-- Lottie Library -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+</body>
+</html>
+
